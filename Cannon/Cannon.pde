@@ -61,7 +61,6 @@ void draw() {
 }
 
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(8.0,180.0,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
