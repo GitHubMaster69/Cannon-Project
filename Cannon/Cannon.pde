@@ -17,6 +17,7 @@ void setup() {
  
 void draw() {
   background(255);
+  drawCannon();
   if(fired){
     for(int i = 0; i < cannonBalls; i++){
     if(gravityState && cannonBall[i].location.y < height-(cannonBall[i].size/2)){
@@ -31,8 +32,8 @@ void draw() {
     cannonBall[i].display();
   }
   }
-  
-    //Cannon
+}
+  void drawCannon(){
     pushMatrix();
     translate(movedX, 0);
     noStroke();
