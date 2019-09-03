@@ -6,6 +6,7 @@ boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
 
+
 void setup() {
   size(1000,800);
   background(255);
@@ -37,7 +38,7 @@ void draw() {
     fill(100);
     pushMatrix();
     translate(120,height-120);
-    rotate(45);
+    rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
     ellipse(0,0,80,160);
     noStroke();
     rect(0,-60,80,70);
