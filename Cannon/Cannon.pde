@@ -5,7 +5,6 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
-float thiccness = 8.0;
 
 
 void setup() {
@@ -40,12 +39,8 @@ void draw() {
     fill(255);
     ellipse(80,height-60,40,40);
     fill(119,69,19);
-<<<<<<< HEAD
     rect(80,height-60,40,10);
     rect(80,height-60,10,40);
-=======
-    ellipse(80,height-60,60,60);
->>>>>>> cb6dd0ccb6f3d5bf785d3f08f2cd131485786f66
     fill(100);
     pushMatrix();
     translate(120,height-120);
@@ -55,23 +50,17 @@ void draw() {
     rect(0,-60,80,80);
     popMatrix();
     fill(119,69,19);
-<<<<<<< HEAD
     ellipse(130,height-60,60,60);
     fill(255);
     ellipse(130,height-60,40,40);
     fill(119,69,19);
     rect(130,height-60,40,10);
     rect(130,height-60,10,40);
-=======
-    stroke(0.5);
-    ellipse(130,height-60,60,60);
->>>>>>> cb6dd0ccb6f3d5bf785d3f08f2cd131485786f66
     fill(100);
     popMatrix();
 }
 
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(thiccness,180.0,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
