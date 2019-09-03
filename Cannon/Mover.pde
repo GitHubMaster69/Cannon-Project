@@ -41,7 +41,14 @@ class Mover {
     stroke(0);
     fill(175);
     //[offset-down] Scaling the mass according to mass.
-    ellipse(location.x,location.y,mass*16,mass*16);
+    translate(location.x, location.y);
+    rotate(frameCount*velocity.x/20);
+    ellipse(0,0,mass*16,mass*16);
+    fill(255,0,0);
+    rect(0, 0, 30,30);
+    fill(175);
+    rotate(-frameCount*velocity.x/20);
+    translate(-location.x, -location.y);
   }
 
   // Somewhat arbitrarily, we are deciding that an object bounces when it hits the edges of a window.

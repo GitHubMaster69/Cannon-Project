@@ -10,7 +10,7 @@ int cannonBalls = 0;
 void setup() {
   size(1000,800);
   background(255);
-  frameRate(144);
+  frameRate(60);
   rectMode(CENTER);
 /*  for(int i = 0; i < ball.length; i++){
     ball[i] = new Mover(random(3.2,8.2),random(50,width),random(50,height));
@@ -49,7 +49,6 @@ void draw() {
   }
   
     //Cannon
-    translate(frameCount,0);
     fill(119,69,19);
     ellipse(50,height-60,60,60);
     ellipse(100,height-60,60,60);
@@ -66,13 +65,12 @@ void draw() {
     //rotate(-45);
     ellipse(100,height-60,60,60);
     fill(100);
-    translate(-frameCount,0);
 }
 
 void cannonShot(){
   int i = cannonBall.length;
   fill(100);
-  cannonBall[cannonBalls] = new Mover(3.0,180.0,height-138.0,mouseX-100, -mouseY+540);
+  cannonBall[cannonBalls] = new Mover(8.0,180.0,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   i++;
