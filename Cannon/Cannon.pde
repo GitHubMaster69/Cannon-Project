@@ -33,8 +33,7 @@ void draw() {
   
     //Cannon
     fill(119,69,19);
-    ellipse(50,height-60,60,60);
-    ellipse(100,height-60,60,60);
+    ellipse(80,height-60,60,60);
     fill(100);
     pushMatrix();
     translate(120,height-120);
@@ -45,7 +44,7 @@ void draw() {
     popMatrix();
     fill(119,69,19);
     stroke(0.5);
-    ellipse(100,height-60,60,60);
+    ellipse(130,height-60,60,60);
     fill(100);
 }
 
