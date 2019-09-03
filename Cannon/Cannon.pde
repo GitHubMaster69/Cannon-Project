@@ -5,6 +5,7 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
+float thiccness = 8.0;
 
 
 void setup() {
@@ -49,7 +50,7 @@ void draw() {
 }
 
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(8.0,180.0,height-138.0,mouseX-100, -mouseY+540);
+  cannonBall[cannonBalls] = new Mover(thiccness,180.0,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
