@@ -32,21 +32,32 @@ void draw() {
   }
   
     //Cannon
+    pushMatrix();
+    noStroke();
     fill(119,69,19);
-    ellipse(50,height-60,60,60);
-    ellipse(100,height-60,60,60);
+    ellipse(80,height-60,60,60);
+    fill(255);
+    ellipse(80,height-60,40,40);
+    fill(119,69,19);
+    rect(80,height-60,40,10);
+    rect(80,height-60,10,40);
     fill(100);
     pushMatrix();
     translate(120,height-120);
     rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
-    ellipse(0,0,80,160);
+    ellipse(0,0,82,160);
     noStroke();
-    rect(0,-60,80,70);
+    rect(0,-60,80,80);
     popMatrix();
     fill(119,69,19);
-    stroke(0.5);
-    ellipse(100,height-60,60,60);
+    ellipse(130,height-60,60,60);
+    fill(255);
+    ellipse(130,height-60,40,40);
+    fill(119,69,19);
+    rect(130,height-60,40,10);
+    rect(130,height-60,10,40);
     fill(100);
+    popMatrix();
 }
 
 void cannonShot(){
