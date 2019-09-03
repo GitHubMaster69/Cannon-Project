@@ -5,7 +5,8 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
-
+float thiccness = 8.0;
+int movedX = 0;
 
 void setup() {
   size(1000,800);
@@ -33,6 +34,7 @@ void draw() {
   
     //Cannon
     pushMatrix();
+    translate(movedX, 0);
     noStroke();
     fill(119,69,19);
     ellipse(80,height-60,60,60);
@@ -61,7 +63,7 @@ void draw() {
 }
 
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(8.0,180.0,height-138.0,mouseX-100, -mouseY+540);
+  cannonBall[cannonBalls] = new Mover(thiccness,180.0,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
@@ -74,11 +76,21 @@ void mouseClicked(){
 }
 
 void keyPressed(){
-  if(key == '1'){
+  if(key == '1'){                          //Toggle wind
     windState = !windState;
     println("wind" + windState);
-  } else if(key == '2'){
+  } else if(key == '2'){                   //Toggle gravity
     gravityState = !gravityState;
     println("gravity" + gravityState);
-  }
+  } else if(keyCode == LEFT){                   //Move cannon left
+    movedX -= 10;
+    println("gravity" + gravityState);
+  } else if(keyCode == RIGHT){                   //Move cannon right
+    movedX += 10;
+    println("gravity" + gravityState); 
+  } else if(key == '5'){                   //Remove cannonballs and reload
+      cannonBall = new Mover[9];
+      fired = false;
+      cannonBalls = 0;
+  } 
 }
