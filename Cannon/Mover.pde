@@ -44,19 +44,19 @@ class Mover {
     if (location.x > width-size) {
       location.x = width-size;
       acceleration.x = 0;
-      velocity.x *= -0.85;
+      velocity.x *= -0.95;
     } else if (location.x < 0+size) {
-      velocity.x *= -0.85;
+      velocity.x *= -0.95;
       location.x = 0+size;
       acceleration.x = 0;
     }
 
     if (location.y > height) {
-      velocity.y *= -0.85;
+      velocity.y *= -0.95;
       location.y = height-(size/4);
       acceleration.y = 0;
     } else if (location.y < 0) {
-      velocity.y *= -0.85;
+      velocity.y *= -0.95;
       location.y = 0+size/2;
       acceleration.y = 0;
     }

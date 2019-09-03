@@ -9,7 +9,7 @@ int cannonBalls = 0;
 void setup() {
   size(1000,800);
   background(255);
-  frameRate(6);
+  frameRate(60);
   rectMode(CENTER);
 }
  
@@ -49,7 +49,6 @@ void draw() {
 }
 
 void cannonShot(){
-  fill(100);
   cannonBall[cannonBalls] = new Mover(8.0,180.0,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
