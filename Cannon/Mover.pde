@@ -29,12 +29,18 @@ class Mover {
 
   void display() {
     stroke(0);
-    fill(175);
     translate(location.x, location.y);
     rotate(-velocity.x);
-    ellipse(0,0,mass*16,mass*16);
+    fill(224,172,105);
+    rect(50,10,30,10);
     fill(255,0,0);
-    rect(0, 0, 60,60);
+    rect(60,10,5,10);
+    fill(0);
+    ellipse(0,0,mass*16,mass*16);;
+    fill(50,50,50);
+    ellipse(5,5,45,45);
+    fill(240,240,240);
+    ellipse(10,3,15,15);
     fill(175);
     rotate(velocity.x);
     translate(-location.x, -location.y);

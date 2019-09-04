@@ -5,7 +5,7 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
-<<<<<<< HEAD
+
 boolean buttonOver = false;
 boolean buttonOver2 = false;
 int buttonX = width/20;
@@ -13,12 +13,12 @@ int buttonY = height/5;
 int buttonX2 = width/20;
 int buttonY2 = 100;
 int buttonSize = 50;
-=======
-float thiccness = 8.0;
+
+float thiccness = 5.0;
 int movedX = 0;
 int movedXVelocity = 0;
 
->>>>>>> 44bf0cf5f2e23a9ea99f3146f7f64913b91e4771
+
 void setup() {
   size(1000,800);
   background(255);
@@ -83,7 +83,7 @@ void draw() {
     rotate(-radians(360*(movedX/30*PI)));
     translate(-130,-(height-60));
     fill(100);
-<<<<<<< HEAD
+
     resetMatrix();
     
     //buttons
@@ -91,9 +91,9 @@ void draw() {
     rect(buttonX2,buttonY2,buttonSize,buttonSize);
  
     
-=======
+
     popMatrix();
->>>>>>> 44bf0cf5f2e23a9ea99f3146f7f64913b91e4771
+
 }
 
 void cannonShot(){
