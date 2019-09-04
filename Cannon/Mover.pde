@@ -41,23 +41,22 @@ class Mover {
   }
 
   void checkEdges() {
-    if (location.x > width-size) {
-      location.x = width-size;
+    if (location.x > width-size/2) {
+      location.x = width-size/2;
       acceleration.x = 0;
       velocity.x *= -0.95;
-    } else if (location.x < 0+size) {
+    } else if (location.x < size/2) {
       velocity.x *= -0.95;
-      location.x = 0+size;
+      location.x = size/2;
       acceleration.x = 0;
     }
-
-    if (location.y > height) {
+    if (location.y > height-size/2) {
       velocity.y *= -0.95;
-      location.y = height-(size/4);
+      location.y = height-(size/2);
       acceleration.y = 0;
-    } else if (location.y < 0) {
+    } else if (location.y < size/2) {
       velocity.y *= -0.95;
-      location.y = 0+size/2;
+      location.y = size/2;
       acceleration.y = 0;
     }
   }
