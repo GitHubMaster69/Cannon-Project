@@ -51,9 +51,11 @@ class Mover {
       acceleration.x = 0;
     }
     if (location.y > height-size/2) {
-      velocity.y *= -0.95;
+      velocity.y *= -0.80;
       location.y = height-(size/2);
-      acceleration.y = 0;
+      if(velocity.y > -3){
+        velocity.y = 0;
+      }
     } else if (location.y < size/2) {
       velocity.y *= -0.95;
       location.y = size/2;

@@ -5,7 +5,6 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
-<<<<<<< HEAD
 boolean buttonOver = false;
 boolean buttonOver2 = false;
 int buttonX = width/20;
@@ -13,16 +12,15 @@ int buttonY = height/5;
 int buttonX2 = width/20;
 int buttonY2 = 100;
 int buttonSize = 50;
-=======
+
 float thiccness = 8.0;
 int movedX = 0;
 int movedXVelocity = 0;
 
->>>>>>> 44bf0cf5f2e23a9ea99f3146f7f64913b91e4771
 void setup() {
   size(1000,800);
   background(255);
-  frameRate(48);
+  frameRate(60);
   rectMode(CENTER);
 }
  
@@ -44,56 +42,63 @@ void draw() {
     cannonBall[i].display();
   }
   }
+      //buttons
+    rect(buttonX,buttonY,buttonSize,buttonSize);
+    rect(buttonX2,buttonY2,buttonSize,buttonSize);
 }
   void drawCannon(){
-    if(movedX > -10){
+    if(movedX > -50){
     movedX += movedXVelocity;
+    } else {
+      movedX = -49;
     }
     pushMatrix();
     translate(movedX, 0);
     noStroke();
     fill(119,69,19);
-    ellipse(80,height-60,60,60);
-    fill(255);
-    ellipse(80,height-60,40,40);
-    fill(119,69,19);
+    pushMatrix();
+    noFill();
+    stroke(119,69,19);
+    strokeWeight(15);
+    ellipse(80,height-60,90,90);
+    strokeWeight(1);
+    popMatrix();
     pushMatrix();
     translate(80,height-60);
-    rotate(-radians(360*(movedX/30*PI)));
-    rect(0,0,40,10);
-    rect(0,0,10,40);
+    rotate(-radians(360*(movedX/60*PI)));
+    fill(119,69,19);
+    rect(0,0,80,15);
+    rect(0,0,15,80);
     popMatrix();
     fill(100);
     pushMatrix();
-    translate(120,height-120);
-    rotate(radians((90-2*degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
+    translate(120,height-100);
+    rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
     ellipse(0,0,82,160);
     noStroke();
     rect(0,-60,80,80);
     popMatrix();
     fill(119,69,19);
-    ellipse(130,height-60,60,60);
-    fill(255);
-    ellipse(130,height-60,40,40);
-    fill(119,69,19);
+    noFill();
+    stroke(119,69,19);
+    strokeWeight(15);
+    ellipse(130,height-60,90,90);
+    strokeWeight(1);
     translate(130,height-60);
-    rotate(radians(360*(movedX/30*PI)));
-    rect(0,0,40,10);
-    rect(0,0,10,40);
-    rotate(-radians(360*(movedX/30*PI)));
+    rotate(-radians(360*(movedX/60*PI)));
+    fill(119,69,19);
+    rect(0,0,80,15);
+    rect(0,0,15,80);
+    rotate(radians(360*(movedX/60*PI)));
     translate(-130,-(height-60));
     fill(100);
-<<<<<<< HEAD
+
     resetMatrix();
-    
-    //buttons
-    rect(buttonX,buttonY,buttonSize,buttonSize);
-    rect(buttonX2,buttonY2,buttonSize,buttonSize);
  
     
-=======
+
     popMatrix();
->>>>>>> 44bf0cf5f2e23a9ea99f3146f7f64913b91e4771
+
 }
 
 void cannonShot(){
