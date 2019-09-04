@@ -7,6 +7,7 @@ boolean fired = false;
 int cannonBalls = 0;
 <<<<<<< HEAD
 =======
+
 >>>>>>> 3af5f63eec98020c77ada59364b93c62a0a60132
 boolean buttonOver = false;
 boolean buttonOver2 = false;
@@ -22,6 +23,11 @@ int movedX = 0;
 int movedXVelocity = 0;
 
 =======
+float thiccness = 5.0;
+int movedX = 0;
+int movedXVelocity = 0;
+
+
 >>>>>>> 3af5f63eec98020c77ada59364b93c62a0a60132
 void setup() {
   size(1000,800);
