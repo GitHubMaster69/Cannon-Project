@@ -5,7 +5,13 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
-
+boolean buttonOver = false;
+boolean buttonOver2 = false;
+int buttonX = width/20;
+int buttonY = height/5;
+int buttonX2 = width/20;
+int buttonY2 = 100;
+int buttonSize = 50;
 void setup() {
   size(1000,800);
   background(255);
@@ -14,6 +20,7 @@ void setup() {
 }
  
 void draw() {
+  update(mouseX, mouseY);
   background(255);
   if(fired){
     for(int i = 0; i < cannonBalls; i++){
@@ -46,6 +53,13 @@ void draw() {
     stroke(0.5);
     ellipse(100,height-60,60,60);
     fill(100);
+    resetMatrix();
+    
+    //buttons
+    rect(buttonX,buttonY,buttonSize,buttonSize);
+    rect(buttonX2,buttonY2,buttonSize,buttonSize);
+ 
+    
 }
 
 void cannonShot(){
@@ -56,7 +70,13 @@ void cannonShot(){
 }
 
 void mouseClicked(){
-  if(cannonBalls < 9){
+  if (buttonOver) {
+      windState = !windState;
+    println("wind" + windState);
+  } else if (buttonOver2) {
+     gravityState = !gravityState;
+     println("gravity" + gravityState);
+  } else if (cannonBalls < 9){
   cannonShot();
   }
 }
@@ -68,5 +88,35 @@ void keyPressed(){
   } else if(key == '2'){
     gravityState = !gravityState;
     println("gravity" + gravityState);
+  }
+}
+
+
+boolean overButton(int x, int y, int width, int height)  {
+  if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y && mouseY <= y+height) {
+    return true;
+  } else {
+    return false;
+  }
+}
+boolean overButton2(int x, int y, int width, int height)  {
+  if (mouseX >= x && mouseX <= x+width && 
+      mouseY >= y && mouseY <= y+height) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+void update(int x, int y) {
+  if ( overButton(buttonX, buttonY, buttonSize, buttonSize) ) {
+    buttonOver = true;
+    buttonOver2 = false;
+  } else if ( overButton2(buttonX2, buttonY2, buttonSize, buttonSize) ) {
+    buttonOver = false;
+    buttonOver2 = true;
+  } else {
+    buttonOver = buttonOver2 = false;
   }
 }
