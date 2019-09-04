@@ -14,18 +14,22 @@ int buttonX2 = width/20;
 int buttonY2 = 100;
 int buttonSize = 50;
 =======
+float thiccness = 8.0;
+int movedX = 0;
+int movedXVelocity = 0;
 
 >>>>>>> 44bf0cf5f2e23a9ea99f3146f7f64913b91e4771
 void setup() {
   size(1000,800);
   background(255);
-  frameRate(60);
+  frameRate(48);
   rectMode(CENTER);
 }
  
 void draw() {
   update(mouseX, mouseY);
   background(255);
+  drawCannon();
   if(fired){
     for(int i = 0; i < cannonBalls; i++){
     if(gravityState && cannonBall[i].location.y < height-(cannonBall[i].size/2)){
@@ -40,23 +44,46 @@ void draw() {
     cannonBall[i].display();
   }
   }
-  
-    //Cannon
+}
+  void drawCannon(){
+    if(movedX > -10){
+    movedX += movedXVelocity;
+    }
+    pushMatrix();
+    translate(movedX, 0);
+    noStroke();
     fill(119,69,19);
-    ellipse(50,height-60,60,60);
-    ellipse(100,height-60,60,60);
+    ellipse(80,height-60,60,60);
+    fill(255);
+    ellipse(80,height-60,40,40);
+    fill(119,69,19);
+    pushMatrix();
+    translate(80,height-60);
+    rotate(-radians(360*(movedX/30*PI)));
+    rect(0,0,40,10);
+    rect(0,0,10,40);
+    popMatrix();
     fill(100);
     pushMatrix();
     translate(120,height-120);
-    rotate(45);
-    ellipse(0,0,80,160);
+    rotate(radians((90-2*degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
+    ellipse(0,0,82,160);
     noStroke();
-    rect(0,-60,80,70);
+    rect(0,-60,80,80);
     popMatrix();
     fill(119,69,19);
-    stroke(0.5);
-    ellipse(100,height-60,60,60);
+    ellipse(130,height-60,60,60);
+    fill(255);
+    ellipse(130,height-60,40,40);
+    fill(119,69,19);
+    translate(130,height-60);
+    rotate(radians(360*(movedX/30*PI)));
+    rect(0,0,40,10);
+    rect(0,0,10,40);
+    rotate(-radians(360*(movedX/30*PI)));
+    translate(-130,-(height-60));
     fill(100);
+<<<<<<< HEAD
     resetMatrix();
     
     //buttons
@@ -64,10 +91,13 @@ void draw() {
     rect(buttonX2,buttonY2,buttonSize,buttonSize);
  
     
+=======
+    popMatrix();
+>>>>>>> 44bf0cf5f2e23a9ea99f3146f7f64913b91e4771
 }
 
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(8.0,180.0,height-138.0,mouseX-100, -mouseY+540);
+  cannonBall[cannonBalls] = new Mover(thiccness,180.0+movedX,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
@@ -86,12 +116,26 @@ void mouseClicked(){
 }
 
 void keyPressed(){
-  if(key == '1'){
+  if(key == '1'){                          //Toggle wind
     windState = !windState;
     println("wind" + windState);
-  } else if(key == '2'){
+  } else if(key == '2'){                   //Toggle gravity
     gravityState = !gravityState;
     println("gravity" + gravityState);
+  } else if(keyCode == LEFT){                   //Move cannon left
+    movedXVelocity = -10;
+  } else if(keyCode == RIGHT){                   //Move cannon right
+    movedXVelocity = 10;
+  } else if(key == '5'){                   //Remove cannonballs and reload
+      cannonBall = new Mover[9];
+      fired = false;
+      cannonBalls = 0;
+  }
+}
+
+void keyReleased(){
+  if(keyCode == LEFT || keyCode == RIGHT){
+    movedXVelocity = 0;
   }
 }
 
