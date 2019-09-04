@@ -5,6 +5,9 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
+<<<<<<< HEAD
+=======
+>>>>>>> 3af5f63eec98020c77ada59364b93c62a0a60132
 boolean buttonOver = false;
 boolean buttonOver2 = false;
 int buttonX = width/20;
@@ -13,10 +16,13 @@ int buttonX2 = width/20;
 int buttonY2 = 100;
 int buttonSize = 50;
 
+<<<<<<< HEAD
 float thiccness = 8.0;
 int movedX = 0;
 int movedXVelocity = 0;
 
+=======
+>>>>>>> 3af5f63eec98020c77ada59364b93c62a0a60132
 void setup() {
   size(1000,800);
   background(255);
