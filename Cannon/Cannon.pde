@@ -7,11 +7,12 @@ boolean fired = false;
 int cannonBalls = 0;
 float thiccness = 8.0;
 int movedX = 0;
+int movedXVelocity = 0;
 
 void setup() {
   size(1000,800);
   background(255);
-  frameRate(60);
+  frameRate(48);
   rectMode(CENTER);
 }
  
@@ -34,6 +35,9 @@ void draw() {
   }
 }
   void drawCannon(){
+    if(movedX > -10){
+    movedX += movedXVelocity;
+    }
     pushMatrix();
     translate(movedX, 0);
     noStroke();
@@ -42,12 +46,16 @@ void draw() {
     fill(255);
     ellipse(80,height-60,40,40);
     fill(119,69,19);
-    rect(80,height-60,40,10);
-    rect(80,height-60,10,40);
+    pushMatrix();
+    translate(80,height-60);
+    rotate(-radians(360*(movedX/30*PI)));
+    rect(0,0,40,10);
+    rect(0,0,10,40);
+    popMatrix();
     fill(100);
     pushMatrix();
     translate(120,height-120);
-    rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
+    rotate(radians((90-2*degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
     ellipse(0,0,82,160);
     noStroke();
     rect(0,-60,80,80);
@@ -57,14 +65,18 @@ void draw() {
     fill(255);
     ellipse(130,height-60,40,40);
     fill(119,69,19);
-    rect(130,height-60,40,10);
-    rect(130,height-60,10,40);
+    translate(130,height-60);
+    rotate(radians(360*(movedX/30*PI)));
+    rect(0,0,40,10);
+    rect(0,0,10,40);
+    rotate(-radians(360*(movedX/30*PI)));
+    translate(-130,-(height-60));
     fill(100);
     popMatrix();
 }
 
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(thiccness,180.0,height-138.0,mouseX-100, -mouseY+540);
+  cannonBall[cannonBalls] = new Mover(thiccness,180.0+movedX,height-138.0,mouseX-100, -mouseY+540);
   fired = true;
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
@@ -84,14 +96,18 @@ void keyPressed(){
     gravityState = !gravityState;
     println("gravity" + gravityState);
   } else if(keyCode == LEFT){                   //Move cannon left
-    movedX -= 10;
-    println("gravity" + gravityState);
+    movedXVelocity = -10;
   } else if(keyCode == RIGHT){                   //Move cannon right
-    movedX += 10;
-    println("gravity" + gravityState); 
+    movedXVelocity = 10;
   } else if(key == '5'){                   //Remove cannonballs and reload
       cannonBall = new Mover[9];
       fired = false;
       cannonBalls = 0;
-  } 
+  }
+}
+
+void keyReleased(){
+  if(keyCode == LEFT || keyCode == RIGHT){
+    movedXVelocity = 0;
+  }
 }

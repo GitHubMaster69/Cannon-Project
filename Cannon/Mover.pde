@@ -50,8 +50,6 @@ class Mover {
       location.x = size/2;
       acceleration.x = 0;
     }
-    println(size);
-
     if (location.y > height-size/2) {
       velocity.y *= -0.95;
       location.y = height-(size/2);
