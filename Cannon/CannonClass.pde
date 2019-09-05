@@ -47,6 +47,10 @@ class CannonClass {
     ellipse(0,0,82,160);
     noStroke();
     rect(0,-60,80,80);
+    fill(119,69,19);
+    rect(-30,40,45,5);
+    fill(100);
+    rect(-20,40,45,15);
     popMatrix();
     fill(119,69,19);
     noFill();
