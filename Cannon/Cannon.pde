@@ -1,11 +1,10 @@
-Mover[] cannonBall = new Mover[9];
+ArrayList<Mover> cannonBalls = new ArrayList<Mover>();
 CannonClass[] Cannon = new CannonClass[1];
 PVector gravity =  new PVector(0,1);
 boolean gravityState = true;
 PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
-int cannonBalls = 0;
 
 boolean buttonOver = false;
 boolean buttonOver2 = false;
@@ -32,17 +31,18 @@ void draw() {
   background(255);
   Cannon[0].drawCannon();
   if(fired){
-    for(int i = 0; i < cannonBalls; i++){
-    if(gravityState && cannonBall[i].location.y < height-(cannonBall[i].size/2)){
-    cannonBall[i].applyForce(gravity);
+    for(int i = 0; i < cannonBalls.size(); i++){
+      Mover cannonBall = cannonBalls.get(i);
+    if(gravityState && cannonBall.location.y < height-(cannonBall.size/2)){
+    cannonBall.applyForce(gravity);
     }
     if(windState){
-    cannonBall[i].applyForce(wind);
+    cannonBall.applyForce(wind);
     }
-    cannonBall[i].checkEdges();
-    cannonBall[i].update();
-    cannonBall[i].checkEdges();
-    cannonBall[i].display();
+    cannonBall.checkEdges();
+    cannonBall.update();
+    cannonBall.checkEdges();
+    cannonBall.display();
   }
   }
       //buttons
@@ -57,7 +57,7 @@ void mouseClicked(){
   } else if (buttonOver2) {
      gravityState = !gravityState;
      println("gravity" + gravityState);
-  } else if (cannonBalls < 9){
+  } else if (cannonBalls.size() < 9){
   Cannon[0].cannonShot();
   }
 }
@@ -74,9 +74,8 @@ void keyPressed(){
   } else if(keyCode == RIGHT){                   //Move cannon right
     movedXVelocity = 10;
   } else if(key == '5'){                   //Remove cannonballs and reload
-      cannonBall = new Mover[9];
+      cannonBalls.clear();
       fired = false;
-      cannonBalls = 0;
   }
 }
 

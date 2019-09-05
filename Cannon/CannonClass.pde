@@ -59,9 +59,7 @@ class CannonClass {
     popMatrix();
 }
 void cannonShot(){
-  cannonBall[cannonBalls] = new Mover(thiccness,180.0+movedX,height-138.0,mouseX-100, -mouseY+540);
+  cannonBalls.add(new Mover(thiccness,180.0+movedX,height-138.0,mouseX-100, -mouseY+540));
   fired = true;
-  cannonBalls++;
-  println(cannonBall[0].velocity, cannonBall[0].location);
-}
+  }
 }
