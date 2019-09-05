@@ -5,6 +5,7 @@ PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
 int cannonBalls = 0;
+int firingTime;
 
 boolean buttonOver = false;
 boolean buttonOver2 = false;
@@ -18,11 +19,14 @@ float thiccness = 5.0;
 int movedX = 0;
 int movedXVelocity = 0;
 
+PImage boom;
+
 void setup() {
   size(1000,800);
   background(255);
   frameRate(60);
   rectMode(CENTER);
+  boom = loadImage("cannonboom.png");
 }
  
 void draw() {
@@ -46,6 +50,9 @@ void draw() {
       //buttons
     rect(buttonX,buttonY,buttonSize,buttonSize);
     rect(buttonX2,buttonY2,buttonSize,buttonSize);
+    
+    
+    
 }
   void drawCannon(){
     if(movedX > -50){
@@ -55,7 +62,6 @@ void draw() {
     }
     pushMatrix();
     translate(movedX, 0);
-    noStroke();
     fill(119,69,19);
     pushMatrix();
     noFill();
@@ -75,6 +81,13 @@ void draw() {
     pushMatrix();
     translate(120,height-100);
     rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
+    if(millis()-firingTime < 300){
+    pushMatrix();
+    rotate(radians(-45));
+    boom.resize(int(800*0.5),int(600*0.5)); //800x600
+    image(boom,-90,-270);
+    popMatrix();
+    }
     ellipse(0,0,82,160);
     noStroke();
     rect(0,-60,80,80);
@@ -112,6 +125,7 @@ void mouseClicked(){
      println("gravity" + gravityState);
   } else if (cannonBalls < 9){
   cannonShot();
+  firingTime = millis();
   }
 }
 
