@@ -4,8 +4,11 @@ boolean gravityState = true;
 PVector wind = new PVector(1,0);
 boolean windState = false;
 boolean fired = false;
+<<<<<<< HEAD
 int cannonBalls = 0;
 int firingTime;
+=======
+>>>>>>> 2e237d1c730efdf1fa18398cf00a61fe782411a6
 
 boolean buttonOver = false;
 boolean buttonOver2 = false;
@@ -26,25 +29,30 @@ void setup() {
   background(255);
   frameRate(60);
   rectMode(CENTER);
+<<<<<<< HEAD
   boom = loadImage("cannonboom.png");
+=======
+  Cannon[0] = new CannonClass(3,3,3);
+>>>>>>> 2e237d1c730efdf1fa18398cf00a61fe782411a6
 }
  
 void draw() {
   update(mouseX, mouseY);
   background(255);
-  drawCannon();
+  Cannon[0].drawCannon();
   if(fired){
-    for(int i = 0; i < cannonBalls; i++){
-    if(gravityState && cannonBall[i].location.y < height-(cannonBall[i].size/2)){
-    cannonBall[i].applyForce(gravity);
+    for(int i = 0; i < cannonBalls.size(); i++){
+      Mover cannonBall = cannonBalls.get(i);
+    if(gravityState && cannonBall.location.y < height-(cannonBall.size/2)){
+    cannonBall.applyForce(gravity);
     }
     if(windState){
-    cannonBall[i].applyForce(wind);
+    cannonBall.applyForce(wind);
     }
-    cannonBall[i].checkEdges();
-    cannonBall[i].update();
-    cannonBall[i].checkEdges();
-    cannonBall[i].display();
+    cannonBall.checkEdges();
+    cannonBall.update();
+    cannonBall.checkEdges();
+    cannonBall.display();
   }
   }
       //buttons
@@ -54,6 +62,7 @@ void draw() {
     
     
 }
+<<<<<<< HEAD
   void drawCannon(){
     if(movedX > -50){
     movedX += movedXVelocity;
@@ -115,6 +124,8 @@ void cannonShot(){
   cannonBalls++;
   println(cannonBall[0].velocity, cannonBall[0].location);
 }
+=======
+>>>>>>> 2e237d1c730efdf1fa18398cf00a61fe782411a6
 
 void mouseClicked(){
   if (buttonOver) {
@@ -123,9 +134,14 @@ void mouseClicked(){
   } else if (buttonOver2) {
      gravityState = !gravityState;
      println("gravity" + gravityState);
+<<<<<<< HEAD
   } else if (cannonBalls < 9){
   cannonShot();
   firingTime = millis();
+=======
+  } else if (cannonBalls.size() < 9){
+  Cannon[0].cannonShot();
+>>>>>>> 2e237d1c730efdf1fa18398cf00a61fe782411a6
   }
 }
 
@@ -141,9 +157,8 @@ void keyPressed(){
   } else if(keyCode == RIGHT){                   //Move cannon right
     movedXVelocity = 10;
   } else if(key == '5'){                   //Remove cannonballs and reload
-      cannonBall = new Mover[9];
+      cannonBalls.clear();
       fired = false;
-      cannonBalls = 0;
   }
 }
 
