@@ -17,6 +17,7 @@ class CannonClass {
       movedX = -49;
     }
     pushMatrix();
+    image(world,0,0);
     translate(movedX, 0);
     fill(119,69,19);
     pushMatrix();

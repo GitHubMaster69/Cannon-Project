@@ -20,6 +20,7 @@ int movedX = 0;
 int movedXVelocity = 0;
 
 PImage boom;
+PImage world;
 
 void setup() {
   size(1000,800);
@@ -27,6 +28,7 @@ void setup() {
   frameRate(60);
   rectMode(CENTER);
   boom = loadImage("cannonboom.png");
+  world = loadImage("world.png");
   Cannon[0] = new CannonClass(3,3,3);
 }
  
