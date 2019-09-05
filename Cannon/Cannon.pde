@@ -7,8 +7,6 @@ boolean windState = false;
 boolean fired = false;
 int firingTime;
 
-
-
 boolean buttonOver = false;
 boolean buttonOver2 = false;
 int buttonX = width/20;
@@ -28,11 +26,8 @@ void setup() {
   background(255);
   frameRate(60);
   rectMode(CENTER);
-
   boom = loadImage("cannonboom.png");
-
   Cannon[0] = new CannonClass(3,3,3);
-
 }
  
 void draw() {
@@ -42,7 +37,7 @@ void draw() {
   if(fired){
     for(int i = 0; i < cannonBalls.size(); i++){
       Mover cannonBall = cannonBalls.get(i);
-    if(gravityState && cannonBall.location.y < height-(cannonBall.size/2)){
+    if(gravityState){
     cannonBall.applyForce(gravity);
     }
     if(windState){
@@ -57,11 +52,7 @@ void draw() {
       //buttons
     rect(buttonX,buttonY,buttonSize,buttonSize);
     rect(buttonX2,buttonY2,buttonSize,buttonSize);
-    
-    
-    
 }
-
 
 void mouseClicked(){
   if (buttonOver) {
@@ -90,12 +81,6 @@ void keyPressed(){
   } else if(key == '5'){                   //Remove cannonballs and reload
       cannonBalls.clear();
       fired = false;
-  }
-}
-
-void keyReleased(){
-  if(keyCode == LEFT || keyCode == RIGHT){
-    movedXVelocity = 0;
   }
 }
 
