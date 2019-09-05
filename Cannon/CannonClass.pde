@@ -73,3 +73,9 @@ void cannonShot(){
   fired = true;
   }
 }
+
+void keyReleased(){
+  if(keyCode == LEFT || keyCode == RIGHT){
+    movedXVelocity = 0;
+  }
+}
