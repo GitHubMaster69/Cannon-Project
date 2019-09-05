@@ -1,4 +1,5 @@
-Mover[] cannonBall = new Mover[9];
+ArrayList<Mover> cannonBalls = new ArrayList<Mover>();
+CannonClass[] Cannon = new CannonClass[1];
 PVector gravity =  new PVector(0,1);
 boolean gravityState = true;
 PVector wind = new PVector(1,0);
