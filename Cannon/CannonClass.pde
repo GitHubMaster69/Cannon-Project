@@ -18,7 +18,6 @@ class CannonClass {
     }
     pushMatrix();
     translate(movedX, 0);
-    noStroke();
     fill(119,69,19);
     pushMatrix();
     noFill();
@@ -38,6 +37,13 @@ class CannonClass {
     pushMatrix();
     translate(120,height-100);
     rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
+    if(millis()-firingTime < 300){
+    pushMatrix();
+    rotate(radians(-45));
+    boom.resize(int(800*0.5),int(600*0.5)); //800x600
+    image(boom,-90,-270);
+    popMatrix();
+    }
     ellipse(0,0,82,160);
     noStroke();
     rect(0,-60,80,80);
