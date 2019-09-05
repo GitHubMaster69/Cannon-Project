@@ -54,6 +54,12 @@ void draw() {
       //buttons
     rect(buttonX,buttonY,buttonSize,buttonSize);
     rect(buttonX2,buttonY2,buttonSize,buttonSize);
+<<<<<<< HEAD
+
+    
+    
+=======
+>>>>>>> 7ddd9cd18f655726d419e1384dbeace6e5f1d106
 }
 
 void mouseClicked(){

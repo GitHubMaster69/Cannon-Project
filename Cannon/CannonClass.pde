@@ -68,6 +68,11 @@ class CannonClass {
     translate(-130,-(height-60));
     fill(100);
     popMatrix();
+    rectMode(CORNER);
+    //powerthingy OwO
+    fill(0,mouseX,0);
+    rect(200,10,min(mouseX, 600),10);
+    rectMode(CENTER);
 }
 void cannonShot(){
   cannonBalls.add(new Mover(thiccness,180.0+movedX,height-138.0,mouseX-100, -mouseY+540));
