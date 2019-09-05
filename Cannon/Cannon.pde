@@ -57,7 +57,7 @@ void draw() {
       //buttons
     rect(buttonX,buttonY,buttonSize,buttonSize);
     rect(buttonX2,buttonY2,buttonSize,buttonSize);
-    
+
     
     
 }
