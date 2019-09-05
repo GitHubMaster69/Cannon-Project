@@ -47,6 +47,10 @@ class CannonClass {
     ellipse(0,0,82,160);
     noStroke();
     rect(0,-60,80,80);
+    fill(119,69,19);
+    rect(-30,40,45,5);
+    fill(100);
+    rect(-20,40,45,15);
     popMatrix();
     fill(119,69,19);
     noFill();
@@ -72,5 +76,11 @@ class CannonClass {
 void cannonShot(){
   cannonBalls.add(new Mover(thiccness,180.0+movedX,height-138.0,mouseX-100, -mouseY+540));
   fired = true;
+  }
+}
+
+void keyReleased(){
+  if(keyCode == LEFT || keyCode == RIGHT){
+    movedXVelocity = 0;
   }
 }

@@ -15,8 +15,6 @@ class Mover {
   }
 
   void applyForce(PVector force) {
-    //[full] Receive a force, divide by mass, and add to acceleration.
-    //PVector f = PVector.div(force,mass);
     PVector f = force;
     velocity.add(f);
   }
