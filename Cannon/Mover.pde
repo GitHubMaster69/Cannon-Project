@@ -10,7 +10,7 @@ class Mover {
     mass = m;
     size = m*16;
     location = new PVector(x,y);
-    velocity = new PVector(xVel/20,-yVel/15);
+    velocity = new PVector(xVel/20,-yVel/12);
     acceleration = new PVector(0,0);
   }
 
