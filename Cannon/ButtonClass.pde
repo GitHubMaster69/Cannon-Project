@@ -27,6 +27,7 @@ boolean effect;
 boolean overButton(int x, int y, int width, int height)  {
   if (mouseX >= x && mouseX <= x+width && 
       mouseY >= y && mouseY <= y+height) {
+        buttonPressed = true;
     return true;
   } else {
     return false;
