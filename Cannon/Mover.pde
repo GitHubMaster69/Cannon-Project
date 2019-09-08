@@ -22,7 +22,9 @@ class Mover {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
+    if(gravityState){
     velocity.mult(0.99);
+    }
   }
 
   void display() {

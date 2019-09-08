@@ -10,13 +10,13 @@ int firingTime;
 float thiccness = 5.0;
 int movedX = 0;
 int movedXVelocity = 0;
+int ammo = 100;
 
 PImage boom;
 PImage world;
 
 void setup() {
   size(1000,800);
-  background(255);
   frameRate(60);
   rectMode(CENTER);
   boom = loadImage("cannonboom.png");
@@ -25,10 +25,9 @@ void setup() {
 }
  
 void draw() {
-  //update(mouseX, mouseY);
-  background(255);
+  image(world,0,0);    //Background image
   Cannon[0].drawCannon();
-  if(fired){
+  if(fired){    //Check to avoid nullpointers
     for(int i = 0; i < cannonBalls.size(); i++){
       Mover cannonBall = cannonBalls.get(i);
     if(gravityState){
@@ -37,20 +36,12 @@ void draw() {
     if(windState){
     cannonBall.applyForce(wind);
     }
-    cannonBall.checkEdges();
     cannonBall.update();
     cannonBall.checkEdges();
     cannonBall.display();
   }
   }
-      
-
-    
-    
-
-
 }
-
 
 void keyPressed(){
   if(key == '1'){                          //Toggle wind
@@ -59,9 +50,9 @@ void keyPressed(){
   } else if(key == '2'){                   //Toggle gravity
     gravityState = !gravityState;
     println("gravity" + gravityState);
-  } else if(keyCode == LEFT){                   //Move cannon left
+  } else if(keyCode == LEFT){              //Move cannon left
     movedXVelocity = -10;
-  } else if(keyCode == RIGHT){                   //Move cannon right
+  } else if(keyCode == RIGHT){             //Move cannon right
     movedXVelocity = 10;
   } else if(key == '5'){                   //Remove cannonballs and reload
       cannonBalls.clear();
@@ -69,8 +60,8 @@ void keyPressed(){
   }
 }
 
-void mouseClicked(){
-  if (cannonBalls.size() < 9){
+void mousePressed(){
+  if (cannonBalls.size() < ammo){
   Cannon[0].cannonShot();
   firingTime = millis();
   }

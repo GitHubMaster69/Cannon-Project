@@ -4,7 +4,7 @@ class CannonClass {
   int speed ;
   int power;
   
-  CannonClass(int wS, int s, int p){
+  CannonClass(int wS, int s, int p){      //These variables aren't actually used at present
     wheelSize = wS;
     speed = s;
     power = p;
@@ -17,10 +17,9 @@ class CannonClass {
       movedX = -49;
     }
     pushMatrix();
-    image(world,0,0);
     translate(movedX, 0);
-    fill(119,69,19);
-    pushMatrix();
+    
+    pushMatrix();                          //Left wheel
     noFill();
     stroke(119,69,19);
     strokeWeight(15);
@@ -34,27 +33,29 @@ class CannonClass {
     rect(0,0,80,15);
     rect(0,0,15,80);
     popMatrix();
+    
     fill(100);
     pushMatrix();
     translate(120,height-100);
-    rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));
+    rotate(radians((90-degrees(atan(float((height-mouseY))/float((mouseX+1)))))));      //Rotation of barrel according to mouse
     if(millis()-firingTime < 300){
     pushMatrix();
     rotate(radians(-45));
-    boom.resize(int(800*0.5),int(600*0.5)); //800x600
+    boom.resize(int(800*0.5),int(600*0.5));               //800x600 Muzzle flash when firing
     image(boom,-90,-270);
     popMatrix();
     }
-    ellipse(0,0,82,160);
     noStroke();
+    ellipse(0,0,82,160);        //Barrel+Fuse
     rect(0,-60,80,80);
     fill(119,69,19);
     rect(-30,40,45,5);
     fill(100);
     rect(-20,40,45,15);
     popMatrix();
-    fill(119,69,19);
-    noFill();
+    
+    pushMatrix();
+    noFill();                             //Right Wheel
     stroke(119,69,19);
     strokeWeight(15);
     ellipse(130,height-60,90,90);
@@ -64,14 +65,12 @@ class CannonClass {
     fill(119,69,19);
     rect(0,0,80,15);
     rect(0,0,15,80);
-    rotate(radians(360*(movedX/60*PI)));
     translate(-130,-(height-60));
-    fill(100);
+    popMatrix();
     popMatrix();
     rectMode(CORNER);
-    //powerthingy OwO
     fill(0,mouseX,0);
-    rect(200,10,min(mouseX, 600),10);
+    rect(200,10,min(mouseX, 600),10);    //powerthingy OwO
     rectMode(CENTER);
 }
 void cannonShot(){
