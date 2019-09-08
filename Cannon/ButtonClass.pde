@@ -7,7 +7,7 @@ int buttonY = height/5;
 int buttonSize = 50;
 
 
-    ButtonClass(int bX,int bY,int bS){
+    ButtonClass(int bX,int bY,int bS, PVector bF){
          buttonX = bX;
          buttonY = bY;
          buttonSize = bS;
@@ -15,7 +15,10 @@ int buttonSize = 50;
        
        
   void buildAButton() {
+    fill(255,255,255);
+    rectMode(CORNER);
     rect(buttonX,buttonY,buttonSize,buttonSize);
+    rectMode(CENTER);
   }
   
 boolean overButton(int x, int y, int width, int height)  {
@@ -32,6 +35,10 @@ boolean overButton(int x, int y, int width, int height)  {
 void update() {
   if ( overButton(buttonX, buttonY, buttonSize, buttonSize) ) {
     buttonOver = true;
-}
-}
+    }
+  if (buttonOver == true){                     //Toggle wind
+    windState = !windState;
+    println("wind" + windState);
+    }
+  }
 }
