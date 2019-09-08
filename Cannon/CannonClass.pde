@@ -16,6 +16,11 @@ class CannonClass {
     } else {
       movedX = -49;
     }
+    if(movedX < 825){
+    } else {
+      movedX = 824;
+    }
+    
     pushMatrix();
     translate(movedX, 0);
     

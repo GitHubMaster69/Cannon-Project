@@ -36,7 +36,7 @@ void draw() {
   
   textSize(20);
   fill(0);
-  text("Shots left = " + str(ammo-cannonBalls.size()),20,200);      // Ammo counter
+  text("Shots left: " + str(ammo-cannonBalls.size()),20,200);      // Ammo counter
   Cannon[0].drawCannon();
   Button[0].buildAButton();
   Button[1].buildAButton();
