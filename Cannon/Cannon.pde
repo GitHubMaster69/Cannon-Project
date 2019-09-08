@@ -34,6 +34,7 @@ void draw() {
   image(world,0,0);    //Background image
   textSize(20);
   fill(0);
+  text("Press 5 to reset",20,170);      // Ammo counter
   text("Shots left: " + str(ammo-cannonBalls.size()),20,200);      // Ammo counter
   Cannon[0].drawCannon();
   Button[0].buildAButton();
