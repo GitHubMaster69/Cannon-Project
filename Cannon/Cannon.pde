@@ -52,12 +52,11 @@ void draw() {
     cannonBall.display();
   }
   }
-<<<<<<< HEAD
+
   image(noGravitypic,10,80);
   image(windpic,10,10);
-=======
     buttonPressed = false;
->>>>>>> f4dbced12f2270a678971a87f811f508976b3040
+
 }
 
 void keyPressed(){
