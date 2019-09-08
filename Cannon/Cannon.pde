@@ -2,9 +2,7 @@ ArrayList<Mover> cannonBalls = new ArrayList<Mover>();
 CannonClass[] Cannon = new CannonClass[1];
 ButtonClass[] Button = new ButtonClass[2];
 PVector gravity =  new PVector(0,1);
-//boolean gravityState = true;
 PVector wind = new PVector(1,0);
-//boolean windState = false;
 boolean fired = false;
 int firingTime;
 boolean buttonPressed;
@@ -34,7 +32,6 @@ void setup() {
  
 void draw() {
   image(world,0,0);    //Background image
-  
   textSize(20);
   fill(0);
   text("Shots left: " + str(ammo-cannonBalls.size()),20,200);      // Ammo counter
