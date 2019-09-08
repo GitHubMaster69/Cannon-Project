@@ -27,15 +27,15 @@ void setup() {
   windp = loadImage("wind.png");
   gravityp = loadImage("gravity.png");
   Cannon[0] = new CannonClass(3,3,3);
-  Button[0] = new ButtonClass(10,10,50,wind);
-  Button[1] = new ButtonClass(10,80,50,gravity);
+//  Button[0] = new ButtonClass(10,10,50);
+//  Button[1] = new ButtonClass(10,80,50);
 }
  
 void draw() {
   image(world,0,0);    //Background image
   Cannon[0].drawCannon();
-  Button[0].buildAButton();
-  Button[1].buildAButton();
+//  Button[0].buildAButton();
+//  Button[1].buildAButton();
   if(fired){    //Check to avoid nullpointers
     for(int i = 0; i < cannonBalls.size(); i++){
       Mover cannonBall = cannonBalls.get(i);
@@ -70,7 +70,7 @@ void keyPressed(){
 }
 
 void mousePressed(){
-  Button[0].update();
+//  Button[0].update();
   if (cannonBalls.size() < ammo){
   Cannon[0].cannonShot();
   firingTime = millis();

@@ -1,16 +1,20 @@
+/*
 public class ButtonClass  {
   
 boolean buttonOver = false;
 
-int buttonX = width/20;
-int buttonY = height/5;
-int buttonSize = 50;
+int buttonX;
+int buttonY;
+int buttonSize;
+boolean[] effects = new boolean[2];
+effects[0] = windState;
+effects[1] = gravityState;
 
-
-    ButtonClass(int bX,int bY,int bS, PVector bF){
+    ButtonClass(int bX,int bY,int bS, int i) {
          buttonX = bX;
          buttonY = bY;
          buttonSize = bS;
+         effects[i] = i;
        }
        
        
@@ -39,8 +43,8 @@ void update() {
       buttonOver = false;
     }
   if (buttonOver == true){                     //Toggle wind
-    windState = !windState;
-    println("wind" + windState);
-    }
+    effects[i] = !effects[i];    }
   }
 }
+
+*/
