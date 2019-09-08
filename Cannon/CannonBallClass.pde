@@ -22,7 +22,7 @@ class Mover {
   void update() {
     velocity.add(acceleration);
     location.add(velocity);
-    if(gravityState){
+    if(Button[1].effect){
     velocity.mult(0.99);
     }
   }
