@@ -15,8 +15,8 @@ int ammo = 100;
 
 PImage boom;
 PImage world;
-PImage gravityp;
-PImage windp;
+PImage noGravitypic;
+PImage windpic;
 
 void setup() {
   size(1000,800);
@@ -24,8 +24,8 @@ void setup() {
   rectMode(CENTER);
   boom = loadImage("cannonboom.png");
   world = loadImage("world.png");
-  windp = loadImage("wind.png");
-  gravityp = loadImage("gravity.png");
+  windpic = loadImage("wind.png");
+  noGravitypic = loadImage("noGravity.png");
   Cannon[0] = new CannonClass(3,3,3);
   Button[0] = new ButtonClass(10,10,50,false);
   Button[1] = new ButtonClass(10,80,50,true);
@@ -54,6 +54,8 @@ void draw() {
     cannonBall.display();
   }
   }
+  image(noGravitypic,10,80);
+  image(windpic,10,10);
 }
 
 void keyPressed(){
