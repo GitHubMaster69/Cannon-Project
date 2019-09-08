@@ -2,11 +2,10 @@ ArrayList<Mover> cannonBalls = new ArrayList<Mover>();
 CannonClass[] Cannon = new CannonClass[1];
 ButtonClass[] Button = new ButtonClass[2];
 PVector gravity =  new PVector(0,1);
-boolean gravityState = true;
 PVector wind = new PVector(1,0);
-boolean windState = false;
 boolean fired = false;
 int firingTime;
+boolean buttonPressed;
 
 float thiccness = 5.0;
 int movedX = 0;
@@ -33,7 +32,6 @@ void setup() {
  
 void draw() {
   image(world,0,0);    //Background image
-  
   textSize(20);
   fill(0);
   text("Shots left: " + str(ammo-cannonBalls.size()),20,200);      // Ammo counter
@@ -54,18 +52,16 @@ void draw() {
     cannonBall.display();
   }
   }
+<<<<<<< HEAD
   image(noGravitypic,10,80);
   image(windpic,10,10);
+=======
+    buttonPressed = false;
+>>>>>>> f4dbced12f2270a678971a87f811f508976b3040
 }
 
 void keyPressed(){
-  if(key == '1'){                          //Toggle wind
-    windState = !windState;
-    println("wind" + windState);
-  } else if(key == '2'){                   //Toggle gravity
-    gravityState = !gravityState;
-    println("gravity" + gravityState);
-  } else if(keyCode == LEFT){              //Move cannon left
+ if(keyCode == LEFT){              //Move cannon left
     movedXVelocity = -10;
   } else if(keyCode == RIGHT){             //Move cannon right
     movedXVelocity = 10;
@@ -78,7 +74,7 @@ void keyPressed(){
 void mousePressed(){
   Button[0].update(0);
   Button[1].update(1);
-  if (cannonBalls.size() < ammo){
+  if (cannonBalls.size() < ammo && !buttonPressed){
   Cannon[0].cannonShot();
   firingTime = millis();
   }
