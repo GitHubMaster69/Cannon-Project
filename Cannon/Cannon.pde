@@ -1,6 +1,6 @@
 ArrayList<Mover> cannonBalls = new ArrayList<Mover>();
 CannonClass[] Cannon = new CannonClass[1];
-//ButtonClass[] Button = new ButtonClass[2];
+ButtonClass[] Button = new ButtonClass[2];
 PVector gravity =  new PVector(0,1);
 boolean gravityState = true;
 PVector wind = new PVector(1,0);
@@ -27,8 +27,8 @@ void setup() {
   windp = loadImage("wind.png");
   gravityp = loadImage("gravity.png");
   Cannon[0] = new CannonClass(3,3,3);
-//  Button[0] = new ButtonClass(10,10,50);
-//  Button[1] = new ButtonClass(10,80,50);
+  Button[0] = new ButtonClass(10,10,50,false);
+  Button[1] = new ButtonClass(10,80,50,true);
 }
  
 void draw() {
@@ -38,15 +38,15 @@ void draw() {
   fill(0);
   text("Shots left = " + str(ammo-cannonBalls.size()),20,200);      // Ammo counter
   Cannon[0].drawCannon();
-//  Button[0].buildAButton();
-//  Button[1].buildAButton();
+  Button[0].buildAButton();
+  Button[1].buildAButton();
   if(fired){    //Check to avoid nullpointers
     for(int i = 0; i < cannonBalls.size(); i++){
       Mover cannonBall = cannonBalls.get(i);
-    if(gravityState){
+    if(Button[1].effect){
     cannonBall.applyForce(gravity);
     }
-    if(windState){
+    if(Button[0].effect){
     cannonBall.applyForce(wind);
     }
     cannonBall.update();
@@ -74,7 +74,8 @@ void keyPressed(){
 }
 
 void mousePressed(){
-//  Button[0].update();
+  Button[0].update(0);
+  Button[1].update(1);
   if (cannonBalls.size() < ammo){
   Cannon[0].cannonShot();
   firingTime = millis();

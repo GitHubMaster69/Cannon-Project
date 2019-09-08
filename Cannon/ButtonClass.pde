@@ -1,4 +1,4 @@
-/*
+
 public class ButtonClass  {
   
 boolean buttonOver = false;
@@ -6,15 +6,14 @@ boolean buttonOver = false;
 int buttonX;
 int buttonY;
 int buttonSize;
-boolean[] effects = new boolean[2];
-effects[0] = windState;
-effects[1] = gravityState;
+boolean effect;
 
-    ButtonClass(int bX,int bY,int bS, int i) {
+
+    ButtonClass(int bX,int bY,int bS, boolean bE) {
          buttonX = bX;
          buttonY = bY;
          buttonSize = bS;
-         effects[i] = i;
+         effect = bE;
        }
        
        
@@ -36,15 +35,13 @@ boolean overButton(int x, int y, int width, int height)  {
   
   
 
-void update() {
+void update(int i) {
   if ( overButton(buttonX, buttonY, buttonSize, buttonSize) ) {
     buttonOver = true;
     } else {
       buttonOver = false;
     }
   if (buttonOver == true){                     //Toggle wind
-    effects[i] = !effects[i];    }
+    Button[i].effect = !Button[i].effect;    }
   }
 }
-
-*/
