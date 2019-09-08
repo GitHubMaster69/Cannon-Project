@@ -34,8 +34,8 @@ void setup() {
 void draw() {
   image(world,0,0);    //Background image
   Cannon[0].drawCannon();
-  //Button[0].buildAButton();
-// Button[1].buildAButton();
+  Button[0].buildAButton();
+  Button[1].buildAButton();
   if(fired){    //Check to avoid nullpointers
     for(int i = 0; i < cannonBalls.size(); i++){
       Mover cannonBall = cannonBalls.get(i);
@@ -70,6 +70,7 @@ void keyPressed(){
 }
 
 void mousePressed(){
+  Button[0].update();
   if (cannonBalls.size() < ammo){
   Cannon[0].cannonShot();
   firingTime = millis();

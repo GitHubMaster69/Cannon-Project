@@ -35,6 +35,8 @@ boolean overButton(int x, int y, int width, int height)  {
 void update() {
   if ( overButton(buttonX, buttonY, buttonSize, buttonSize) ) {
     buttonOver = true;
+    } else {
+      buttonOver = false;
     }
   if (buttonOver == true){                     //Toggle wind
     windState = !windState;
